@@ -123,8 +123,24 @@ void drawBoard() {
 }
 
 void spawnFruit() {
-    fruitX = rand() % (width - 2)+ 1;
-    fruitY = rand() % (height - 2) + 1;
+    bool inSnake = true;
+
+    while (inSnake) {
+        fruitX = rand() % (width - 2) + 1;
+        fruitY = rand() % (height - 2) + 1;
+        int newFruitX = fruitX;
+        int newFruitY = fruitY;
+        for (int i = 0; i < snakeBody.size(); i++) {
+            if (fruitX == snakeBody[i].first && fruitY == snakeBody[i].second) {
+                newFruitX = rand() % (width - 2) + 1;
+                newFruitY = rand() % (height - 2) + 1;
+            }
+        }
+
+        if (newFruitX == fruitX && newFruitY == fruitY) {
+            inSnake = false;
+        }
+    }
 }
 
 char getUserInput() {
@@ -183,4 +199,5 @@ void selfCollisionCheck() {
             cout << "Self collision! Game over :(" << endl;
         }
     }
+
 }
