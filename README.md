@@ -1,2 +1,2 @@
 # SnakeGame
-Snake game to practice printing to the screen. 
+Snake game that prints directly to the terminal using different programming styles. To run it, clone the repository and run the commands: 
